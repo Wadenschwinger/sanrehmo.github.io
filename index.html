@@ -31,7 +31,7 @@ body, html {
     margin: 0 auto;
     margin-top: : 50%;
     margin-bottom: 1vw;
-    border-radius: 10vw;
+    border-radius: 200px;
     max-width: 15vw;
     height: auto;
 	  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.2), 0 18px 60px 0 rgba(0, 0, 0, 0.19);
@@ -55,8 +55,39 @@ body, html {
 
 .typewrite {
   padding: 0px !important;
-  font-size: 4vw !important;
+  font-size: 4vw;
 }
+
+.w3-border-white {
+  margin:auto;
+  width:5%;
+  margin-top:2.5%;
+  margin-bottom:5%;
+}
+
+@media only screen and (max-width: 360px) {
+    .w3-display-middle {
+        position: center;
+        width: 100%;
+    }
+
+    .typewrite {
+        font-size: 8vw;
+    }
+
+    .roundimage {
+      max-width: 30vw;
+    }
+
+    .w3-border-white {
+      width:10%;
+    }
+
+    .icons {
+      font-size: 6vw !important;
+    }
+}
+
 
 @font-face {
   font-family: 'Product Sans';
@@ -149,12 +180,12 @@ body, html {
     <img class="roundimage" src="pic7.jpg""></img>
 
     <h1>
-      <a href="" class="typewrite" data-period="500" data-type='["Hi, Im a Data Engineer.", "Hi, Im Christian."]', onclick="return false;", style="cursor: auto">
+      <a href="" class="typewrite" data-period="500" data-type='["Hi, Im Christian.", "Hi, Im a Data Engineer."]', onclick="return false;", style="cursor: auto">
         <span class="wrap"></span>
       </a>
     </h1>
 
-    <hr class="w3-border-white" style="margin:auto;width:10%;margin-top:2.5%;margin-bottom:5%">
+    <hr class="w3-border-white">
 
     <div class="icons">
       <i class="fab fa-twitter fa-fw" onclick="window.open('https://twitter.com/Wadenschwinger', )", onMouseOver="this.style.cursor='pointer'"></i>
@@ -163,9 +194,8 @@ body, html {
       <i class="fab fa-xing fa-fw" onclick="window.open('https://www.xing.com/profile/Christian_Rehm26')", onMouseOver="this.style.cursor='pointer'"></i>
     </div>
   </div>
-  <div class="w3-display-middle">
-
-    <!--Data Engineer @ <a href="", style="color:#792D79; padding-bottom:5%", onclick="window.open('https://www.wayfair.com/')", onMouseOver="this.style.cursor='pointer'">Wayfair</a>
+  <!--<div class="w3-display-middle">
+    Data Engineer @ <a href="", style="color:#792D79; padding-bottom:5%", onclick="window.open('https://www.wayfair.com/')", onMouseOver="this.style.cursor='pointer'">Wayfair</a>
   </div>
 </div>
 
