@@ -75,10 +75,128 @@ body, html {
 }
 
 .video_wrapper {
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
 }
 
+.video-background {
+    background: #000;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+}
+.video-foreground,
+.video-background iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+}
+
+#vidtop-content {
+    top: 0;
+}
+
+.spinner {
+    position: absolute; /* or absolute */
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    font-size: 5vw !important;
+}
+
+.sk-folding-cube {
+  color: white;
+  margin: 0 auto;
+  width: 10vw;
+  height: 10vw;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+}
+
+.sk-folding-cube .sk-cube {
+  float: left;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1); 
+}
+.sk-folding-cube .sk-cube:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+          animation: sk-foldCubeAngle 2.4s infinite linear both;
+  -webkit-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+.sk-folding-cube .sk-cube2 {
+  -webkit-transform: scale(1.1) rotateZ(90deg);
+          transform: scale(1.1) rotateZ(90deg);
+}
+.sk-folding-cube .sk-cube3 {
+  -webkit-transform: scale(1.1) rotateZ(180deg);
+          transform: scale(1.1) rotateZ(180deg);
+}
+.sk-folding-cube .sk-cube4 {
+  -webkit-transform: scale(1.1) rotateZ(270deg);
+          transform: scale(1.1) rotateZ(270deg);
+}
+.sk-folding-cube .sk-cube2:before {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.sk-folding-cube .sk-cube3:before {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s; 
+}
+.sk-folding-cube .sk-cube4:before {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+@-webkit-keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  } 
+}
+
+@keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  }
+}
 
 @media only screen and (max-width: 500px) {
     .w3-display-middle {
@@ -101,6 +219,17 @@ body, html {
     .icons {
       font-size: 6vw !important;
     }
+
+    .spinner {
+      font-size:10vw !important;
+    }
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .video-foreground { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+    .video-foreground { width: 300%; left: -100%; }
 }
 
 
@@ -111,7 +240,7 @@ body, html {
   src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
 }
 
-* { color:#fff; text-decoration: none; font-size:125%; font-family: Product Sans; margin:0; padding:0;}
+* { color:#fff; text-decoration: none; font-size:125%; font-family: Product Sans; margin:0; padding:0; box-sizing: border-box;}
 
 @-webkit-keyframes blink { 50% { border-color: rgba(0, 0, 0, 0); }  }
 
@@ -120,9 +249,131 @@ body, html {
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript">
 
-    function show_hide() {
+    
+  </script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+</head>
+
+<body>
+      <!--<div class="spinner">
+        <i class="fa fa-spinner fa-spin" style="top:50%;left:50%"></i>
+      </div>-->
+  <div class="sk-folding-cube">
+    <div class="sk-cube1 sk-cube"></div>
+    <div class="sk-cube2 sk-cube"></div>
+    <div class="sk-cube4 sk-cube"></div>
+    <div class="sk-cube3 sk-cube"></div>
+  </div>
+<div class="wrappr", id="wrapper", style="opacity: 0;">
+<div class="video-background">
+    <div class="video-foreground">
+      <img src="overlay.png" id="overlay" alt="Italian Trulli">
+      <div id="player", style="background: #FFFFFF; opacity: 0;">
+      <script>
+
+
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          videoId: 'ab0TSkLe-E0',
+          playerVars: {'start': 47, 'autoplay': 1, 'controls': 0, 'vq': 'hd1080', 'mute': 1, 'showinfo': 0, 'frameborder': 0},
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+
+        });
+        player.addEventListener('onStateChange', function(event) {
+                console.log("Player State Change", event);
+
+                // OnStateChange Data
+                if ([-1, 3].includes(event.data)) {
+                  document.getElementById("player").style.opacity = "0";
+                } else {
+                    setTimeout(function(){
+                      document.getElementById("player").style.opacity = "1";
+                      document.getElementById("wrapper").style.opacity = "1";
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }}, 1000);
+                    
+                }
+            });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+
+      
+        event.target.playVideo();
+
+        var interval_is_stopped = false;
+        setInterval(function (){
+          var current_time = event.target.getCurrentTime();
+
+          if (current_time > 180.0 && !interval_is_stopped) {
+            interval_is_stopped = true;
+            jQuery('#player').fadeTo(400, 0.7, function(){
+              player.seekTo(46);
+              jQuery(this).fadeTo(400, 1, function(){
+                interval_is_stopped = false;
+              });
+            });
+          }
+        }, 10);
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+
+        console.log(event.data)
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+        if(event.data === 1) {
+           jQuery('#video-overlay').hide();
+       }
+
+
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+
+      function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.ENDED) {
+            player.playVideo(); 
+        }
+    }
+
+
+
+
+/* TYPEWRITER */
+
+function show_hide() {
     var x = document.getElementById("ifr");
     if (x.style.display === "none") {
         x.style.display = "block";
@@ -185,15 +436,7 @@ body, html {
         }, delta);
     };
 
-    window.onload = function() {
-        var elements = document.getElementsByClassName('typewrite');
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
-            }
-        }
+    /*window.onload = */
         
         // INJECT CSS
         var css = document.createElement("style");
@@ -201,21 +444,20 @@ body, html {
         css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff; -webkit-animation: blink .5s step-end infinite alternate; }";
         document.body.appendChild(css);
       
-    };
-  </script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-</head>
-
-<body>
-
+    </script>
+      <!--<iframe id="ifr" width=100% height=100% src="https://www.youtube.com/embed/um8G1LT5Eig?playlist=um8G1LT5Eig&amp;loop=1&amp;vq=hd720&amp;mute=1&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+    </div>
+    </div>
+</div>
+<div id="vidtop-content">
 
   <div class="w3-display-middle">
+<div id="video-overlay" style="background-image:url('overlay.png');z-index: 1;"></div>
 
-    <img class="roundimage" src="pic7.jpg", onClick='show_hide()'></img>
+    <img class="roundimage" src="pic7.jpg"></img>
 
     <h1>
-      <a href="" class="typewrite" data-period="500" data-type='["Hi, I&#39;m a Data Engineer.", "Hi, I&#39;m an Entrepreneur.", "Hi, I&#39;m an Enthusiast.", "Hi, I&#39;m Christian."]', onclick="return false;", style="cursor: auto">
+      <a href="" class="typewrite" data-period="750" data-type='["Hi, I&#39;m a Data Engineer.", "Hi, I&#39;m an Entrepreneur.", "Hi, I&#39;m Christian."]', onclick="return false;", style="cursor: auto">
         <span class="wrap"></span>
       </a>
     </h1>
@@ -234,8 +476,6 @@ body, html {
     </div>
   </div>
 </div>
-<div class=video_wrapper>
-<iframe id="ifr" width=100% height=100% src="https://www.youtube.com/embed/um8G1LT5Eig?playlist=''&amp;loop=1&amp;vq=hd720&amp;mute=1&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 </body>
 </html>
