@@ -286,6 +286,7 @@ body, html {
       <div id="player", style="background: #FFFFFF; opacity: 0;">
       <script>
 
+      var passed = false;
 
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -321,7 +322,7 @@ body, html {
                       document.getElementById("player").style.opacity = "1";
                       document.getElementById("wrapper").style.opacity = "1";
                     }, 1000)
-
+                    if (!passed) {
                     setTimeout(function(){
                       var elements = document.getElementsByClassName('typewrite');
                       for (var i=0; i<elements.length; i++) {
@@ -332,6 +333,7 @@ body, html {
                       }
                     }}, 1250);  
                 }
+              }
             });
       }
 
@@ -349,6 +351,7 @@ body, html {
             interval_is_stopped = true;
             jQuery('#player').fadeTo(400, 0.7, function(){
               player.seekTo(136);
+              passed = true;
               jQuery(this).fadeTo(400, 1, function(){
                 interval_is_stopped = false;
               });
@@ -458,7 +461,7 @@ body, html {
     <img class="roundimage" src="pic7.jpg"></img>
 
     <h1>
-      <a href="" id="typewritr" class="typewrite" data-period="1000" data-type='["Hi, I&#39;m a Data Engineer.", "Hi, I&#39;m an Entrepreneur.", "Hi, I&#39;m Christian."]', onclick="return false;", style="cursor: text">
+      <a href="" id="typewritr" class="typewrite" data-period="500" data-type='["Hi, I&#39;m a Data Engineer.", "Hi, I&#39;m an Entrepreneur.", "Hi, I&#39;m Christian."]', onclick="return false;", style="cursor: text">
         <span class="wrap"></span>
       </a>
     </h1>
