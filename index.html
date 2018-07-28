@@ -114,7 +114,7 @@ body, html {
   height: 10vw;
   position: absolute;
   top: 40%;
-  left: 50%;
+  left: 47%;
   -webkit-transform: rotateZ(45deg);
           transform: rotateZ(45deg);
 }
@@ -306,14 +306,17 @@ body, html {
                     setTimeout(function(){
                       document.getElementById("player").style.opacity = "1";
                       document.getElementById("wrapper").style.opacity = "1";
-        var elements = document.getElementsByClassName('typewrite');
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
-            }
-        }}, 1000);
+                    }, 1000)
+
+                    setTimeout(function(){
+                      var elements = document.getElementsByClassName('typewrite');
+                      for (var i=0; i<elements.length; i++) {
+                          var toRotate = elements[i].getAttribute('data-type');
+                          var period = elements[i].getAttribute('data-period');
+                          if (toRotate) {
+                            new TxtType(elements[i], JSON.parse(toRotate), period);
+                      }
+                    }}, 1250);
                     
                 }
             });
@@ -457,7 +460,7 @@ function show_hide() {
     <img class="roundimage" src="pic7.jpg"></img>
 
     <h1>
-      <a href="" class="typewrite" data-period="750" data-type='["Hi, I&#39;m a Data Engineer.", "Hi, I&#39;m an Entrepreneur.", "Hi, I&#39;m Christian."]', onclick="return false;", style="cursor: auto">
+      <a href="" class="typewrite" data-period="1000" data-type='["Hi, I&#39;m a Data Engineer.", "Hi, I&#39;m an Entrepreneur.", "Hi, I&#39;m Christian."]', onclick="return false;", style="cursor: auto">
         <span class="wrap"></span>
       </a>
     </h1>
