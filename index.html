@@ -45,6 +45,16 @@ body, html {
   position: top !important
 }
 
+.smalltext {
+  font-size: 2vw !important;
+  padding: 0;
+  margin: 0;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
 .w3-display-middle {
   position: center !important;
   width: 75% !important;
@@ -64,6 +74,12 @@ body, html {
   margin-bottom:5%;
 }
 
+.video_wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+
 @media only screen and (max-width: 500px) {
     .w3-display-middle {
         position: center;
@@ -71,7 +87,7 @@ body, html {
     }
 
     .typewrite {
-        font-size: 6vw;
+        font-size: 7vw;
     }
 
     .roundimage {
@@ -95,7 +111,7 @@ body, html {
   src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
 }
 
-* { color:#fff; text-decoration: none; font-size:125%; font-family: Product Sans}
+* { color:#fff; text-decoration: none; font-size:125%; font-family: Product Sans; margin:0; padding:0;}
 
 @-webkit-keyframes blink { 50% { border-color: rgba(0, 0, 0, 0); }  }
 
@@ -105,6 +121,26 @@ body, html {
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript">
+
+    function show_hide() {
+    var x = document.getElementById("ifr");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        document.getElementById("ifr").src="https://www.youtube.com/embed/playlist?list=PLTKF3nMMRsgyzOkXoOhIx-fh9snrj4GvA&amp;loop=1&amp;vq=hd720&amp;mute=1&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0";
+    } else {
+        x.style.display = "none";
+    }
+
+    function interior() {
+      var x = document.getElementById("ifr");
+      document.getElementById("ifr").src="https://www.youtube.com/embed/2StbLLvdx6I?autoplay=1";
+      document.getElementById("ifr").style="display:block";
+      
+
+    }
+}
+
+
     var TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;
         this.el = el;
@@ -132,13 +168,13 @@ body, html {
 
         if (this.isDeleting) { delta /= 2; }
 
-        if (!this.isDeleting && this.txt == 'Hi, Im Christian.') {
+        if (!this.isDeleting && this.txt == 'Hi, I\'m Christian.') {
           return;
         } else if (!this.isDeleting && this.txt === fullTxt) {
         delta = this.period;
         console.log(this.txt)
         this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === 'Hi, Im') {
+        } else if (this.isDeleting && this.txt === 'Hi, I\'m') {
         this.isDeleting = false;
         this.loopNum++;
         delta = 100;
@@ -176,13 +212,17 @@ body, html {
 
   <div class="w3-display-middle">
 
-    <img class="roundimage" src="pic7.jpg""></img>
+    <img class="roundimage" src="pic7.jpg", onClick='show_hide()'></img>
 
     <h1>
-      <a href="" class="typewrite" data-period="500" data-type='["Hi, Im a Data Engineer.", "Hi, Im Christian."]', onclick="return false;", style="cursor: auto">
+      <a href="" class="typewrite" data-period="500" data-type='["Hi, I&#39;m a Data Engineer.", "Hi, I&#39;m an Entrepreneur.", "Hi, I&#39;m an Enthusiast.", "Hi, I&#39;m Christian."]', onclick="return false;", style="cursor: auto">
         <span class="wrap"></span>
       </a>
     </h1>
+
+    <!--<div class="smalltext">
+      Data Engineer @ <a href="", style="color:#792D79; padding-bottom:5%", onclick="window.open('https://www.wayfair.com/')", onMouseOver="this.style.cursor='pointer'", class="link">Wayfair</a>
+    </div>-->
 
     <hr class="w3-border-white">
 
@@ -193,10 +233,9 @@ body, html {
       <i class="fab fa-xing fa-fw" onclick="window.open('https://www.xing.com/profile/Christian_Rehm26')", onMouseOver="this.style.cursor='pointer'"></i>
     </div>
   </div>
-  <!--<div class="w3-display-middle">
-    Data Engineer @ <a href="", style="color:#792D79; padding-bottom:5%", onclick="window.open('https://www.wayfair.com/')", onMouseOver="this.style.cursor='pointer'">Wayfair</a>
-  </div>
 </div>
-
+<div class=video_wrapper>
+<iframe id="ifr" width=100% height=100% src="https://www.youtube.com/embed/um8G1LT5Eig?playlist=''&amp;loop=1&amp;vq=hd720&amp;mute=1&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
 </body>
 </html>
