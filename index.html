@@ -300,7 +300,7 @@ body, html {
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
           videoId: 'ab0TSkLe-E0',
-          playerVars: {'start': 84, 'autoplay': 1, 'controls': 0, 'vq': 'hd1080', 'mute': 1, 'showinfo': 0, 'frameborder': 0},
+          playerVars: {'start': 136, 'autoplay': 1, 'controls': 0, 'vq': 'hd1080', 'mute': 1, 'showinfo': 0, 'frameborder': 0},
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -348,7 +348,7 @@ body, html {
           if (current_time > 180.0 && !interval_is_stopped) {
             interval_is_stopped = true;
             jQuery('#player').fadeTo(400, 0.7, function(){
-              player.seekTo(84);
+              player.seekTo(136);
               jQuery(this).fadeTo(400, 1, function(){
                 interval_is_stopped = false;
               });
