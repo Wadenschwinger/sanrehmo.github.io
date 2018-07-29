@@ -30,7 +30,7 @@ body, html {
     margin: 0 auto;
     margin-top: : 50%;
     margin-bottom: 1vw;
-    border-radius: 200px;
+    border-radius: 500px;
     max-width: 15vw;
     height: auto;
 	  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.2), 0 18px 60px 0 rgba(0, 0, 0, 0.19);
@@ -64,7 +64,7 @@ body, html {
 
 .typewrite {
   padding: 0px !important;
-  font-size: 4vw;
+  font-size: 5vw;
 }
 
 .w3-border-white {
@@ -78,7 +78,7 @@ body, html {
   position: fixed;
   right: 0;
   bottom: 0;
-  min-width: 100%; 
+  min-width: 100%;
   min-height: 100%;
 }
 
@@ -114,7 +114,7 @@ body, html {
   height: 10vw;
   position: absolute;
   top: 40%;
-  left: 45%;
+  left: 38%;
   -webkit-transform: rotateZ(45deg);
           transform: rotateZ(45deg);
 }
@@ -126,7 +126,7 @@ body, html {
   position: relative;
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
-          transform: scale(1.1); 
+          transform: scale(1.1);
 }
 .sk-folding-cube .sk-cube:before {
   content: '';
@@ -165,7 +165,7 @@ body, html {
 .sk-folding-cube .sk-cube3:before {
   //background-color: #3700B3;
   -webkit-animation-delay: 0.6s;
-          animation-delay: 0.6s; 
+          animation-delay: 0.6s;
 }
 .sk-folding-cube .sk-cube4:before {
   //background-color: #C51162;
@@ -176,31 +176,31 @@ body, html {
   0%, 10% {
     -webkit-transform: perspective(140px) rotateX(-180deg);
             transform: perspective(140px) rotateX(-180deg);
-    opacity: 0; 
+    opacity: 0;
   } 25%, 75% {
     -webkit-transform: perspective(140px) rotateX(0deg);
             transform: perspective(140px) rotateX(0deg);
-    opacity: 1; 
+    opacity: 1;
   } 90%, 100% {
     -webkit-transform: perspective(140px) rotateY(180deg);
             transform: perspective(140px) rotateY(180deg);
-    opacity: 0; 
-  } 
+    opacity: 0;
+  }
 }
 
 @keyframes sk-foldCubeAngle {
   0%, 10% {
     -webkit-transform: perspective(140px) rotateX(-180deg);
             transform: perspective(140px) rotateX(-180deg);
-    opacity: 0; 
+    opacity: 0;
   } 25%, 75% {
     -webkit-transform: perspective(140px) rotateX(0deg);
             transform: perspective(140px) rotateX(0deg);
-    opacity: 1; 
+    opacity: 1;
   } 90%, 100% {
     -webkit-transform: perspective(140px) rotateY(180deg);
             transform: perspective(140px) rotateY(180deg);
-    opacity: 0; 
+    opacity: 0;
   }
 }
 
@@ -208,10 +208,6 @@ body, html {
     .w3-display-middle {
         position: center;
         width: 100%;
-    }
-
-    .typewrite {
-        font-size: 5.9vw;
     }
 
     .roundimage {
@@ -230,22 +226,49 @@ body, html {
       font-size:10vw !important;
     }
 
-    .sk-folding-cube {
-      width: 20vw !important;
-      height: 20vw !important; 
-    }
-
-    .video-foreground { 
-      width: 400% !important; 
-      left: -100% !important; 
+    .video-foreground {
+      width: 1480px !important;
+      left: -100% !important;
     }
 }
 
 @media (min-aspect-ratio: 16/9) {
-    .video-foreground { height: 300%; top: -100%; }
+
+    .video-foreground {
+      height: 300%; top: -100%;
+    }
+
+    .sk-folding-cube {
+      top: 40%;
+      left: 47.5%;
+    }
+
 }
-@media (max-aspect-ratio: 16/9) {
-    .video-foreground { width: 300%; left: -100%; }
+
+@media (max-aspect-ratio: 15/9) {
+
+    .video-foreground {
+      width: 300%; left: -100%;
+    }
+
+    .typewrite {
+        font-size: 5.5vh;
+    }
+
+    .icons {
+      font-size: 8vw !important;
+    }
+
+    .roundimage {
+        max-width: 35vw;
+    }
+
+    .sk-folding-cube {
+      width: 30vw !important;
+      height: 30vw !important;
+      top: 40%;
+      left: 38%;
+    }
 }
 
 
@@ -268,7 +291,7 @@ body, html {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript">
 
-    
+
   </script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -293,6 +316,13 @@ body, html {
       <script>
 
       var passed = false;
+      var once_played = false;
+
+      // randomly generated start time
+
+      var vidlength = 17590
+      function starttime() { return Math.floor(Math.random() * 17400) + 1 }
+
 
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -306,8 +336,9 @@ body, html {
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          videoId: 'ab0TSkLe-E0',
-          playerVars: {'start': 136, 'autoplay': 1, 'controls': 0, 'vq': 'hd1080', 'mute': 1, 'showinfo': 0, 'frameborder': 0},
+          /*videoId: 'ab0TSkLe-E0',*/
+          videoId: 'x25wXhCWpCU',
+          playerVars: {'start': starttime(), 'autoplay': 1, 'controls': 0, 'vq': 'hd1080', 'mute': 1, 'showinfo': 0, 'frameborder': 0},
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -318,12 +349,13 @@ body, html {
                 console.log("Player State Change", event);
 
                 // OnStateChange Data
-                if ([-1,0,2,3,5].includes(event.data)) {
+                if ([-1,0,2,3,5].includes(event.data) && !once_played) {
                   document.getElementById("player").style.opacity = "0";
                   if (event.data == 2) {
                     player.playVideo();
                   }
                 } else {
+                  once_played = true;
                     setTimeout(function(){
                       document.getElementById("player").style.opacity = "1";
                       document.getElementById("wrapper").style.opacity = "1";
@@ -337,7 +369,8 @@ body, html {
                           if (toRotate) {
                             new TxtType(elements[i], JSON.parse(toRotate), period);
                       }
-                    }}, 1250);  
+                    }}, 1250);
+                    passed = true;
                 }
               }
             });
@@ -346,17 +379,17 @@ body, html {
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
 
-      
+
         event.target.playVideo();
 
         var interval_is_stopped = false;
         setInterval(function (){
           var current_time = event.target.getCurrentTime();
 
-          if (current_time > 180.0 && !interval_is_stopped) {
+          if (current_time > 17500 && !interval_is_stopped) {
             interval_is_stopped = true;
             jQuery('#player').fadeTo(400, 0.7, function(){
-              player.seekTo(136);
+              player.seekTo(starttime());
               passed = true;
               jQuery(this).fadeTo(400, 1, function(){
                 interval_is_stopped = false;
@@ -386,7 +419,7 @@ body, html {
 
       function onPlayerStateChange(event) {
         if (event.data === YT.PlayerState.ENDED) {
-            player.playVideo(); 
+            player.playVideo();
         }
     }
 
@@ -418,7 +451,7 @@ body, html {
         this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
         var that = this;
-        var delta = 175 - Math.random() * 100;
+        var delta = 200 - Math.random() * 100;
 
         if (this.isDeleting) { delta /= 2; }
 
@@ -446,13 +479,13 @@ body, html {
     };
 
     /*window.onload = */
-        
+
         // INJECT CSS
         var css = document.createElement("style");
         css.type = "text/css";
         css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff; -webkit-animation: blink .5s step-end infinite alternate; }";
         document.body.appendChild(css);
-      
+
       var x = window.matchMedia("(max-width: 700px)")
 
     </script>
@@ -467,7 +500,7 @@ body, html {
     <img class="roundimage" src="pic7.jpg"></img>
 
     <h1>
-      <a href="" id="typewritr" class="typewrite" data-period="500" data-type='["Hi, I&#39;m a Data Engineer.", "Hi, I&#39;m an Entrepreneur.", "Hi, I&#39;m Christian."]', onclick="return false;", style="cursor: text">
+      <a href="" id="typewritr" class="typewrite" data-period="750" data-type='["Hi, I&#39;m a Data Engineer.", "Hi, I&#39;m an Entrepreneur.", "Hi, I&#39;m Christian."]', onclick="return false;", style="cursor: text">
         <span class="wrap"></span>
       </a>
     </h1>
