@@ -55,6 +55,18 @@ body, html {
     text-decoration: underline;
 }
 
+#overlay {
+  position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#212121;
+    opacity:0.1;
+    /*background:rgba(255,255,255,0.8); or just this*/
+    color:#212121;
+}
+
 .w3-display-middle {
   position: center !important;
   width: 75% !important;
@@ -69,30 +81,23 @@ body, html {
 
 .w3-border-white {
   margin:auto;
-  width:5%;
+  width:7.5%;
   margin-top:2.5%;
   margin-bottom:5%;
 }
 
-.video_wrapper {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-}
-
 .video-background {
-    background: #000;
     position: fixed;
     top: 0; right: 0; bottom: 0; left: 0;
 }
+
 .video-foreground,
 .video-background iframe {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
+    z-index: 1;
 }
 
 #vidtop-content {
@@ -317,7 +322,7 @@ body, html {
         player = new YT.Player('player', {
           /*videoId: 'ab0TSkLe-E0',*/
           videoId: 'x25wXhCWpCU',
-          playerVars: {'start': starttime(), 'autoplay': 1, 'controls': 0, 'vq': 'hd1080', 'mute': 1, 'showinfo': 0, 'frameborder': 0},
+          playerVars: {'wmode': 'opaque', 'start': starttime(), 'autoplay': 1, 'controls': 0, 'vq': 'hd1080', 'mute': 1, 'showinfo': 0, 'frameborder': 0},
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -472,10 +477,10 @@ body, html {
     </div>
     </div>
 </div>
+      <div id="overlay"></div>
 <div id="vidtop-content">
 
   <div class="w3-display-middle">
-
     <img class="roundimage" src="pic7.jpg"></img>
 
     <h1>
