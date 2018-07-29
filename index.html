@@ -204,34 +204,7 @@ body, html {
   }
 }
 
-@media only screen and (max-width: 500px) {
-    .w3-display-middle {
-        position: center;
-        width: 100%;
-    }
-
-    .roundimage {
-      max-width: 30vw;
-    }
-
-    .w3-border-white {
-      width:10%;
-    }
-
-    .icons {
-      font-size: 6vw !important;
-    }
-
-    .spinner {
-      font-size:10vw !important;
-    }
-
-    .video-foreground {
-      width: 1480px !important;
-      left: -100% !important;
-    }
-}
-
+/*screen*/
 @media (min-aspect-ratio: 10/9) {
 
   .video-foreground {
@@ -243,13 +216,18 @@ body, html {
       left: 47.5%;
     }
 
+    #pill {
+      border:0.5vh solid white !important;
+    }
+
 }
 
 /*mobile*/
 @media (max-aspect-ratio: 9/9) {
 
     .video-foreground {
-      width: 300%; left: -100%;
+      width: 200vh;
+       left: -100%;
     }
 
     .typewrite {
@@ -510,7 +488,7 @@ body, html {
       Data Engineer @ <a href="", style="color:#792D79; padding-bottom:5%", onclick="window.open('https://www.wayfair.com/')", onMouseOver="this.style.cursor='pointer'", class="link">Wayfair</a>
     </div>-->
 
-    <hr class="w3-border-white">
+    <hr class="w3-border-white w3-round-xlarge" id="pill" style="border:0.25vh solid white">
 
     <div class="icons">
       <i class="fab fa-twitter fa-fw" onclick="window.open('https://twitter.com/Wadenschwinger', )", onMouseOver="this.style.cursor='pointer'"></i>
