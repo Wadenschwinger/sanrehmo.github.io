@@ -232,11 +232,11 @@ body, html {
     }
 }
 
-@media (min-aspect-ratio: 16/9) {
+@media (min-aspect-ratio: 10/9) {
 
-    .video-foreground {
-      height: 300%; top: -100%;
-    }
+  .video-foreground {
+    width: 300%; left: -100%;
+  }
 
     .sk-folding-cube {
       top: 40%;
@@ -245,14 +245,15 @@ body, html {
 
 }
 
-@media (max-aspect-ratio: 15/9) {
+/*mobile*/
+@media (max-aspect-ratio: 9/9) {
 
     .video-foreground {
       width: 300%; left: -100%;
     }
 
     .typewrite {
-        font-size: 5.5vh;
+        font-size: 5vh;
     }
 
     .icons {
