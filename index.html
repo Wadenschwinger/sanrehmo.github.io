@@ -408,6 +408,9 @@ body, html {
         this.isDeleting = false;
     };
 
+	var nameCount = 0
+	var makerBool = false;
+	
     TxtType.prototype.tick = function() {
         var i = this.loopNum % this.toRotate.length;
         var fullTxt = this.toRotate[i];
@@ -421,14 +424,17 @@ body, html {
         this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
         var that = this;
-        var delta = 160 - Math.random() * 100;
+        var delta = 175 - Math.random() * 75;
 
         if (this.isDeleting) { delta /= 2; }
 
-        if (!this.isDeleting && this.txt == 'Hi, I\'m Christian.') {
-          return;
-        }  else if (!this.isDeleting && this.txt === fullTxt) {
-          if (!this.isDeleting && this.txt == 'Hi, I\'m an Entrepreneur.') {
+		// if (this.txt == 'Hi, I\'m a Maker.')
+		
+        if (!this.isDeleting && this.txt == 'Hi, I\'m Christian.' && bool) {
+			return;
+		}
+        else if (!this.isDeleting && this.txt === fullTxt) {
+          if (!this.isDeleting && this.txt == 'Hi, I\'m a Maker.') {
             bool = true;
         }
         delta = this.period;
@@ -467,7 +473,7 @@ body, html {
     <img class="roundimage" src="pic7.jpg"></img>
 
     <h1>
-      <a href="" id="typewritr" class="typewrite" data-period="850" data-type='["Hi, I&#39;m a Data Engineer.", "Hi, I&#39;m a Maker.", "Hi, I&#39;m Christian."]', onclick="return false;", style="cursor: text">
+      <a href="" id="typewritr" class="typewrite" data-period="850" data-type='["Hi, I&#39;m Christian.", "Hi, I&#39;m a Data Engineer.", "Hi, I&#39;m a Maker.", "Hi, I&#39;m Christian."]', onclick="return false;", style="cursor: text">
         <span class="wrap"></span>
       </a>
     </h1>
