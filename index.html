@@ -202,6 +202,113 @@ body, html {
   }
 }
 
+.cssload-loader {
+	position: absolute;
+    top: 45%;
+    left: 45%;
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+.cssload-loader,
+.cssload-loader:before,
+.cssload-loader:after {
+	animation: 1.15s infinite ease-in-out;
+		-o-animation: 1.15s infinite ease-in-out;
+		-ms-animation: 1.15s infinite ease-in-out;
+		-webkit-animation: 1.15s infinite ease-in-out;
+		-moz-animation: 1.15s infinite ease-in-out;
+}
+.cssload-loader:before,
+.cssload-loader:after {
+	width: 100%; 
+	height: 100%;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.cssload-loader:before,
+.cssload-loader:after {
+		content: "";
+}
+
+.cssload-loader {
+		background-color: white;
+		animation: cssload-fireworks 69s infinite ease-in-out;
+		-o-animation: cssload-fireworks 69s infinite ease-in-out;
+		-ms-animation: cssload-fireworks 69s infinite ease-in-out;
+		-webkit-animation: cssload-fireworks 69s infinite ease-in-out;
+		-moz-animation: cssload-fireworks 69s infinite ease-in-out;
+}
+
+		.cssload-loader:before {
+				content: "";
+				width: 80%;
+				height: 80%;
+				background-color: black;
+				top: 10%;
+				left: 10%;
+				box-shadow: 5px -3px 0 rgba(255,100,100,0.7),
+										5px 5px 0 rgba(100,255,100,0.7),
+										-3px 5px 0 rgba(100,100,255,0.7),
+										-5px -5px 0 rgba(240,240,120,0.7);
+		-o-box-shadow: 5px -3px 0 rgba(255,100,100,0.7),
+										5px 5px 0 rgba(100,255,100,0.7),
+										-3px 5px 0 rgba(100,100,255,0.7),
+										-5px -5px 0 rgba(240,240,120,0.7);
+		-ms-box-shadow: 5px -3px 0 rgba(255,100,100,0.7),
+										5px 5px 0 rgba(100,255,100,0.7),
+										-3px 5px 0 rgba(100,100,255,0.7),
+										-5px -5px 0 rgba(240,240,120,0.7);
+		-webkit-box-shadow: 5px -3px 0 rgba(255,100,100,0.7),
+										5px 5px 0 rgba(100,255,100,0.7),
+										-3px 5px 0 rgba(100,100,255,0.7),
+										-5px -5px 0 rgba(240,240,120,0.7);
+		-moz-box-shadow: 5px -3px 0 rgba(255,100,100,0.7),
+										5px 5px 0 rgba(100,255,100,0.7),
+										-3px 5px 0 rgba(100,100,255,0.7),
+										-5px -5px 0 rgba(240,240,120,0.7);
+		}
+	
+.cssload-loader:after {
+	content: "";
+	border: 3px solid white;
+	z-index: 2;
+	top: -3px;
+	left: -3px;
+}
+
+
+
+@keyframes cssload-fireworks {
+	0%	 { transform: rotate(0deg); }
+	100% { transform: rotate(360000deg); }
+}
+
+@-o-keyframes cssload-fireworks {
+	0%	 { -o-transform: rotate(0deg); }
+	100% { -o-transform: rotate(360000deg); }
+}
+
+@-ms-keyframes cssload-fireworks {
+	0%	 { -ms-transform: rotate(0deg); }
+	100% { -ms-transform: rotate(360000deg); }
+}
+
+@-webkit-keyframes cssload-fireworks {
+	0%	 { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360000deg); }
+}
+
+@-moz-keyframes cssload-fireworks {
+	0%	 { -moz-transform: rotate(0deg); }
+	100% { -moz-transform: rotate(360000deg); }
+}
+
+
 /*screen*/
 @media (min-aspect-ratio: 10/9) {
 
@@ -219,6 +326,7 @@ body, html {
     }
 
 }
+
 
 /*mobile*/
 @media (max-aspect-ratio: 9/9) {
@@ -272,12 +380,9 @@ body, html {
 
 <body>
 
-  <div class="sk-folding-cube", id='cube'>
-    <div class="sk-cube1 sk-cube"></div>
-    <div class="sk-cube2 sk-cube"></div>
-    <div class="sk-cube4 sk-cube"></div>
-    <div class="sk-cube3 sk-cube"></div>
-  </div>
+<div class="wrapper">
+	<div class="cssload-loader"></div>
+</div>
 
 <div class="wrappr", id="wrapper", style="opacity: 0;">
 <div class="video-background">
