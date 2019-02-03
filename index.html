@@ -428,7 +428,6 @@ body, html {
 
         });
         player.addEventListener('onStateChange', function(event) {
-                console.log("Player State Change", event);
 
                 // OnStateChange Data
                 if ([-1,0,2,3,5].includes(event.data) && !once_played) {
@@ -487,7 +486,6 @@ body, html {
       var done = false;
       function onPlayerStateChange(event) {
 
-        console.log(event.data)
         if (event.data == YT.PlayerState.PLAYING && !done) {
           setTimeout(stopVideo, 6000);
           done = true;
