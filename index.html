@@ -223,7 +223,7 @@ body, html {
 }
 .cssload-loader:before,
 .cssload-loader:after {
-	width: 100%; 
+	width: 100%;
 	height: 100%;
 	border-radius: 50%;
 	position: absolute;
@@ -273,7 +273,7 @@ body, html {
 										-3px 5px 0 rgba(100,100,255,0.7),
 										-5px -5px 0 rgba(240,240,120,0.7);
 		}
-	
+
 .cssload-loader:after {
 	content: "";
 	border: 3px solid white;
@@ -355,7 +355,7 @@ body, html {
       top: 40%;
       left: 37%;
     }
-	
+
 	.cssload-loader {
 	  width: 30vw !important;
       height: 30vw !important;
@@ -403,9 +403,8 @@ body, html {
       var once_played = false;
 
       // randomly generated start time
-
-      var vidlength = 21609
-      function starttime() { return 1000 }
+      var vidlength = 336
+      function starttime() { return Math.ceil(Math.random() * vidlength)}
 
 
       // 2. This code loads the IFrame Player API code asynchronously.
@@ -420,8 +419,8 @@ body, html {
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          videoId: '_NurX-9v2SA',
-          playerVars: {'wmode': 'opaque', 'start': 1000, 'autoplay': 1, 'controls': 0, 'vq': 'hd720', 'mute': 1, 'showinfo': 0, 'frameborder': 0},
+          videoId: 'SCE-QeDfXtA',
+          playerVars: {'wmode': 'opaque', 'start': starttime(), 'autoplay': 1, 'controls': 0, 'vq': 'hd720', 'mute': 1, 'showinfo': 0, 'frameborder': 0},
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -468,7 +467,7 @@ body, html {
         setInterval(function (){
           var current_time = event.target.getCurrentTime();
 
-          if (current_time > 215000 && !interval_is_stopped) {
+          if (current_time > vidlength && !interval_is_stopped) {
             interval_is_stopped = true;
             jQuery('#player').fadeTo(400, 0.7, function(){
               player.seekTo(starttime());
@@ -521,7 +520,7 @@ body, html {
 
 	var nameCount = 0
 	var makerBool = false;
-	
+
     TxtType.prototype.tick = function() {
         var i = this.loopNum % this.toRotate.length;
         var fullTxt = this.toRotate[i];
@@ -535,12 +534,12 @@ body, html {
         this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
         var that = this;
-        var delta = 175 - Math.random() * 75;
+        var delta = 200 - Math.random() * 100;
 
         if (this.isDeleting) { delta /= 2; }
 
 		// if (this.txt == 'Hi, I\'m a Maker.')
-		
+
         if (!this.isDeleting && this.txt == 'Hi, I\'m Christian.' && bool) {
 			return;
 		}
