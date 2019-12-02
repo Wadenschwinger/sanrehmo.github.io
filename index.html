@@ -458,10 +458,10 @@ body, html {
 
           if (current_time > vidlength && !interval_is_stopped) {
             interval_is_stopped = true;
-            jQuery('#player').fadeTo(400, 0.7, function(){
+            jQuery('#player').fadeTo(vidlength, 0.7, function(){
               player.seekTo(starttime());
               passed = true;
-              jQuery(this).fadeTo(400, 1, function(){
+              jQuery(this).fadeTo(vidlength, 1, function(){
                 interval_is_stopped = false;
               });
             });
