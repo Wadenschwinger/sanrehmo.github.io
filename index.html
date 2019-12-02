@@ -49,16 +49,6 @@ body, html {
     text-decoration: underline;
 }
 
-#overlay {
-  position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#212121;
-    opacity:0.2;
-    color:#212121;
-}
 
 .w3-display-middle {
   position: center !important;
@@ -403,9 +393,8 @@ body, html {
       var once_played = false;
 
       // randomly generated start time
-      var vidlength = 336
+      var vidlength = 240
       function starttime() { return Math.ceil(Math.random() * vidlength)}
-
 
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -415,12 +404,12 @@ body, html {
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
       // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
+      //    after the API code downloads. 'TJhDvs2_CKY'
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          videoId: 'SCE-QeDfXtA',
-          playerVars: {'wmode': 'opaque', 'start': starttime(), 'autoplay': 1, 'speed': 0.5, 'controls': 0, 'vq': 'hd720', 'mute': 1, 'showinfo': 0, 'frameborder': 0},
+          videoId: 'TJhDvs2_CKY',
+          playerVars: {'wmode': 'opaque', 'start': starttime(), 'autoplay': 1, 'speed': 0.2, 'controls': 0, 'vq': '480', 'mute': 1, 'showinfo': 0, 'frameborder': 0},
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -548,7 +537,6 @@ body, html {
             bool = true;
         }
         delta = this.period;
-        console.log(this.txt)
         this.isDeleting = true;
         } else if (this.isDeleting && this.txt === 'Hi, I\'m') {
           if (bool == true && x.matches) {
