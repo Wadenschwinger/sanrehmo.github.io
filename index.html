@@ -393,8 +393,8 @@ body, html {
       var once_played = false;
 
       // randomly generated start time
-      var vidlength = 240
-      function starttime() { return Math.ceil(Math.random() * vidlength)}
+      var vidlength = 663
+      function starttime() { return Math.ceil(Math.random() * vidlength)+20}
 
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -408,7 +408,7 @@ body, html {
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          videoId: 'TJhDvs2_CKY',
+          videoId: 'Gu4UvRaIgkU',
           playerVars: {'wmode': 'opaque', 'start': starttime(), 'autoplay': 1, 'speed': 0.2, 'controls': 0, 'vq': 'hd720', 'mute': 1, 'showinfo': 0, 'frameborder': 0},
           events: {
             'onReady': onPlayerReady,
