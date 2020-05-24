@@ -168,13 +168,6 @@ html {
 
 .video-foreground,
 .video-background iframe {
-  animation: fadein 2s;
-  -moz-animation: fadein 2s;
-  /* Firefox */
-  -webkit-animation: fadein 2s;
-  /* Safari and Chrome */
-  -o-animation: fadein 2s;
-  /* Opera */
   position: absolute;
   top: 0;
   left: 0;
