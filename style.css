@@ -110,7 +110,7 @@ html {
 
 .icons i:hover {
   transform: scale(1.05);
-  text-shadow: 0 0 1vw black;
+  text-shadow: 0 0 1vw slate;
 }
 
 .horiz_line {
