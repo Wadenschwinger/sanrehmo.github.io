@@ -3,10 +3,10 @@ var passed = false;
 var once_played = false;
 
 // randomly generated start time
-var vidlength = 1750
+var vidlength = 257
 
 function starttime() {
-  return Math.ceil(Math.random() * vidlength) + 200
+  return Math.ceil(Math.random() * vidlength) + 20
 }
 
 // 2. This code loads the IFrame Player API code asynchronously.
@@ -24,7 +24,7 @@ var player;
 function onYouTubeIframeAPIReady() {
 
   player = new YT.Player('player', {
-    videoId: '7KXGZAEWzn0',
+    videoId: '9ZfN87gSjvI',
     playerVars: {
       'wmode': 'opaque',
       'start': starttime(),
@@ -107,7 +107,6 @@ function onPlayerStateChange(event) {
     done = true;
   }
 
-
 }
 
 function stopVideo() {
@@ -124,7 +123,7 @@ function onPlayerStateChange(event) {
 /* TYPEWRITER */
 
 var bool = false;
-/*var x = window.matchMedia("(max-width: 500px)")*/
+/* var x = window.matchMedia("(max-width: 500px)") */
 
 var TxtType = function(el, toRotate, period) {
   this.toRotate = toRotate;
@@ -170,7 +169,7 @@ TxtType.prototype.tick = function() {
     this.isDeleting = true;
   } else if (this.isDeleting && this.txt === 'Hi, I\'m') {
     if (bool == true && x.matches) {
-      /*document.getElementById("typewritr").style="font-size:8vw";*/
+      /* document.getElementById("typewritr").style="font-size:8vw"; */
     }
     this.isDeleting = false;
     this.loopNum++;
@@ -189,4 +188,3 @@ css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff; -webkit-a
 document.body.appendChild(css);
 
 var x = window.matchMedia("(max-width: 700px)")
-
