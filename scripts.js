@@ -20,6 +20,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 //    after the API code downloads. 'TJhDvs2_CKY'
 var player;
 
+// run when YouTube player is ready
 function onYouTubeIframeAPIReady() {
 
   player = new YT.Player('player', {
