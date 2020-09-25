@@ -114,6 +114,7 @@ function stopVideo() {
   player.stopVideo();
 }
 
+// restart the video if it stopped
 function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.ENDED) {
     player.playVideo();
