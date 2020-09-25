@@ -3,7 +3,7 @@ var passed = false;
 var once_played = false;
 
 // randomly generated start time
-var vidlength = 257
+var vidlength = 240
 
 function starttime() {
   return Math.ceil(Math.random() * vidlength) + 20
