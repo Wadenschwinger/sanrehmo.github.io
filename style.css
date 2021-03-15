@@ -18,12 +18,13 @@ body {
   height: 10rem;
   justify-content: center;
   width: 40rem;
+  font-size: 5vh !important;
 }
 
 span {
   color: var(--main-color);
   font-family: 'Product Sans', sans-serif;
-  font-size: 5vw;
+  font-size: 8vw;
   margin: 0 -0.6rem;
 }
 
@@ -40,7 +41,7 @@ svg #circlegroup {
   animation: spin 0.5s linear forwards infinite;
   transform-origin: center;
   stroke: var(--main-color);
-  stroke-opacity: 0.75;
+  stroke-opacity: 1;
   stroke-dasharray: 1300;
 }
 
@@ -148,7 +149,7 @@ html {
 
 .typewrite {
   padding: 0px !important;
-  font-size: 5vw !important;
+  font-size: 7vw !important;
 }
 
 .w3-border-white {
