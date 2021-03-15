@@ -129,7 +129,7 @@ html {
   text-decoration: underline;
 }
 
-#overlay {
+/* #overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -138,8 +138,7 @@ html {
   background: #212121;
   opacity: 0.25;
   color: #212121;
-}
-
+} */
 .w3-display-middle {
   position: center !important;
   width: 75% !important;
