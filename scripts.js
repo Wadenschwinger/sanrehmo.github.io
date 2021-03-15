@@ -23,13 +23,14 @@ var player;
 // run when YouTube player is ready
 function onYouTubeIframeAPIReady() {
 
+  // _MW6ReBj1Ok
   player = new YT.Player('player', {
-    videoId: '9ZfN87gSjvI',
+    videoId: 'JhjDuVW1euQ',
     playerVars: {
       'wmode': 'opaque',
-      'start': starttime(),
+      'start': '0',
       'autoplay': 1,
-      'speed': 1,
+      'speed': 0.5,
       'controls': 0,
       'vq': '480',
       'mute': 1,
