@@ -25,10 +25,10 @@ function onYouTubeIframeAPIReady() {
 
   // _MW6ReBj1Ok
   player = new YT.Player('player', {
-    videoId: 'JhjDuVW1euQ',
+    videoId: 'jgm58cbu0kw',
     playerVars: {
       'wmode': 'opaque',
-      'start': '0',
+      'start': '200',
       'autoplay': 1,
       'speed': 0.5,
       'controls': 0,
