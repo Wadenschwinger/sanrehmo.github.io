@@ -12,65 +12,7 @@ body {
   min-height: 100%;
 }
 
-.container {
-  align-items: center;
-  display: flex;
-  height: 10rem;
-  justify-content: center;
-  width: 40rem;
-  font-size: 5vh !important;
-}
 
-span {
-  color: var(--main-color);
-  font-family: 'Product Sans', sans-serif;
-  font-size: 8vw;
-  margin: 0 -0.6rem;
-}
-
-span:first-of-type {
-  margin-right: -0.7rem;
-}
-
-svg {
-  height: 5rem;
-  transform: translatey(-0.15rem);
-}
-
-svg #circlegroup {
-  animation: spin 0.5s linear forwards infinite;
-  transform-origin: center;
-  stroke: var(--main-color);
-  stroke-opacity: 1;
-  stroke-dasharray: 1300;
-}
-
-svg #firstCircle,
-svg #secondCircle {
-  animation: loading 4s ease-in-out forwards infinite;
-}
-
-svg #secondCircle {
-  transform-origin: center;
-  transform: scale(-1);
-}
-
-@keyframes loading {
-  0% {
-    stroke-dashoffset: 1750;
-  }
-
-  90%,
-  100% {
-    stroke-dashoffset: 3889;
-  }
-}
-
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 body,
 h1 {
@@ -149,6 +91,7 @@ html {
 .typewrite {
   padding: 0px !important;
   font-size: 7vw !important;
+  white-space: nowrap !important;
 }
 
 .w3-border-white {
@@ -175,6 +118,46 @@ html {
   height: 100%;
   pointer-events: none;
   z-index: -1;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Fallback animated background if video doesn't load */
+.video-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  z-index: -2;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 #vidtop-content {

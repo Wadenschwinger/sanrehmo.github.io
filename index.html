@@ -11,39 +11,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name='keywords' content='christian, rehm, machine, learning, engineer, data, science, software'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                   <script src="https://kit.fontawesome.com/75aa5d3686.js" crossorigin="anonymous"></script>
-  <link rel="shortcut icon" href="https://user-images.githubusercontent.com/21010788/82762398-1902ef00-9e01-11ea-8182-46cc63f9748e.png">
+  <script src="https://kit.fontawesome.com/75aa5d3686.js" crossorigin="anonymous"></script>
+  <link rel="shortcut icon"
+    href="https://user-images.githubusercontent.com/21010788/82762398-1902ef00-9e01-11ea-8182-46cc63f9748e.png">
 </head>
 
 <body>
 
-  <div class="container">
-    <!-- <span>L</span>
-    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
-      <g id="circlegroup">
-        <circle id="firstCircle" cx="256" cy="256" r="140" fill="none" stroke-width="95" />
-        <circle id="secondCircle" cx="256" cy="256" r="140" fill="none" stroke-width="95" />
-      </g>
-    </svg> -->
-    <span>LOADING</span>
-  </div>
-
-  <div class="wrappr" , id="wrapper" , style="opacity: 0;">
+  <div class="wrappr" , id="wrapper">
     <div class="video-background">
       <div class="video-foreground">
-        <div id="player" , style="background: #FFFFFF; opacity: 0;">
-          <script src="scripts.js"></script>
-        </div>
+        <video id="bg-video" class="bg-video" autoplay muted loop playsinline>
+          <source src="content/video/bg.webm" type="video/webm">
+          <!-- Fallback to animated background if video doesn't load -->
+        </video>
       </div>
     </div>
-    <!-- <div id="overlay"></div> -->
     <div id="vidtop-content">
 
       <div class="w3-display-middle">
         <img class="roundimage" src="content/img/headshot.jpeg"></img>
 
         <h1>
-          <a href="" id="typewritr" class="typewrite" data-period="850" data-type='["Hi, I&#39;m a ML Engineer.", "Hi, I&#39;m a Maker.", "Hi, I&#39;m Christian."]' , onclick="return false;" , style="cursor: text">
+          <a href="" id="typewritr" class="typewrite" data-period="850"
+            data-type='["Hi, I&#39;m a ML Engineer.", "Hi, I&#39;m a Maker.", "Hi, I&#39;m Christian."]' ,
+            onclick="return false;" , style="cursor: text">
             <span class="wrap"></span>
           </a>
         </h1>
@@ -51,13 +43,19 @@
         <hr class="w3-border-white w3-round-xlarge" id="pill" style="border:0.25vh solid white">
 
         <div class="icons">
-          <i class="fa-brands fa-github fa-fw" onclick="window.open('https://github.com/SanRehmo')" , onMouseOver="this.style.cursor='pointer'"></i>
-          <i class="fa-brands fa-linkedin-in fa-fw" onclick="window.open('https://www.linkedin.com/in/christian-rehm-1b1640134/')" , onMouseOver="this.style.cursor='pointer'"></i>
-          <i class="fa-brands fa-x-twitter fa-fw" onclick="window.open('https://twitter.com/Wadenschwinger')" , onMouseOver="this.style.cursor='pointer'"></i>
+          <i class="fa-brands fa-github fa-fw" onclick="window.open('https://github.com/SanRehmo')" ,
+            onMouseOver="this.style.cursor='pointer'"></i>
+          <i class="fa-brands fa-linkedin-in fa-fw"
+            onclick="window.open('https://www.linkedin.com/in/christian-rehm-1b1640134/')" ,
+            onMouseOver="this.style.cursor='pointer'"></i>
+          <i class="fa-brands fa-x-twitter fa-fw" onclick="window.open('https://twitter.com/Wadenschwinger')" ,
+            onMouseOver="this.style.cursor='pointer'"></i>
         </div>
       </div>
     </div>
   </div>
+
+  <script src="scripts.js"></script>
 </body>
 
 </html>

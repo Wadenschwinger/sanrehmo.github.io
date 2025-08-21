@@ -1,145 +1,113 @@
 /* VIDEO BACKGROUND */
-var passed = false;
-var once_played = false;
+var typewriterInitialized = false;
+var cssInjected = false;
+var initCalled = false;
 
-// randomly generated start time
-var vidlength = 240
+// Initialize content immediately
+function initContent() {
+  // Prevent multiple calls
+  if (initCalled) return;
+  initCalled = true;
 
-function starttime() {
-  return Math.ceil(Math.random() * vidlength) + 20
-}
+  // Initialize video background
+  initVideoBackground();
 
-// 2. This code loads the IFrame Player API code asynchronously.
-var tag = document.createElement('script');
-
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-// 3. This function creates an <iframe> (and YouTube player)
-//    after the API code downloads. 'TJhDvs2_CKY'
-var player;
-
-// run when YouTube player is ready
-function onYouTubeIframeAPIReady() {
-
-  // _MW6ReBj1Ok
-  player = new YT.Player('player', {
-    videoId: 'jgm58cbu0kw',
-    playerVars: {
-      'wmode': 'opaque',
-      'start': '200',
-      'autoplay': 1,
-      'speed': 0.5,
-      'controls': 0,
-      'vq': '480',
-      'mute': 1,
-      'showinfo': 0,
-      'frameborder': 0
-    },
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
-    }
-
-  });
-  player.addEventListener('onStateChange', function(event) {
-
-    // OnStateChange Data
-    if ([-1, 0, 2, 3, 5].includes(event.data) && !once_played) {
-      document.getElementById("player").style.opacity = "0";
-      if (event.data == 2) {
-        player.playVideo();
-      }
-    } else {
-      once_played = true;
-      setTimeout(function() {
-        document.getElementById("player").style.opacity = "1";
-        document.getElementById("wrapper").style.opacity = "1";
-      }, 1000)
-      if (!passed) {
-        setTimeout(function() {
-          var elements = document.getElementsByClassName('typewrite');
-          for (var i = 0; i < elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
-            }
-          }
-        }, 1250);
-        passed = true;
-      }
-    }
-  });
-}
-
-// 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-
-  event.target.playVideo();
-
-  var interval_is_stopped = false;
-  setInterval(function() {
-    var current_time = event.target.getCurrentTime();
-
-    if (current_time > vidlength && !interval_is_stopped) {
-      interval_is_stopped = true;
-      jQuery('#player').fadeTo(vidlength, 0.7, function() {
-        player.seekTo(starttime());
-        passed = true;
-        jQuery(this).fadeTo(vidlength, 1, function() {
-          interval_is_stopped = false;
-        });
-      });
-    }
-  }, 10);
-}
-
-// 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
-var done = false;
-
-function onPlayerStateChange(event) {
-
-  if (event.data == YT.PlayerState.PLAYING && !done) {
-    setTimeout(stopVideo, 6000);
-    done = true;
-  }
-
-}
-
-function stopVideo() {
-  player.stopVideo();
-}
-
-// restart the video if it stopped
-function onPlayerStateChange(event) {
-  if (event.data === YT.PlayerState.ENDED) {
-    player.playVideo();
+  // Start typewriter effect after 1 second delay
+  if (!typewriterInitialized) {
+    setTimeout(function () {
+      startTypewriter();
+      typewriterInitialized = true;
+    }, 1000);
   }
 }
+
+// Initialize video background with random start time
+function initVideoBackground() {
+  var video = document.getElementById('bg-video');
+  if (video) {
+    // Set video to loop
+    video.loop = true;
+
+    // When video metadata is loaded, set random start time
+    video.addEventListener('loadedmetadata', function () {
+      var duration = video.duration; // Duration in seconds
+      var randomTime = Math.random() * (duration - 60); // Random time, but leave 60 seconds buffer
+      video.currentTime = randomTime;
+      video.play();
+    });
+
+    // Ensure video plays when it can
+    video.addEventListener('canplay', function () {
+      video.play();
+    });
+  }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+  initContent();
+});
+
+// Also handle window load as backup
+window.addEventListener('load', function () {
+  if (!initCalled) {
+    initContent();
+  }
+});
 
 /* TYPEWRITER */
 
 var bool = false;
-/* var x = window.matchMedia("(max-width: 500px)") */
+var typewriterInstance = null;
 
-var TxtType = function(el, toRotate, period) {
+function startTypewriter() {
+  // Prevent multiple initializations
+  if (typewriterInstance) return;
+
+  var element = document.getElementById('typewritr');
+  if (element) {
+    // Check if typewriter is already running
+    if (element.getAttribute('data-typewriter-active') === 'true') return;
+
+    // Mark as active
+    element.setAttribute('data-typewriter-active', 'true');
+
+    // Clear any existing content
+    element.innerHTML = '';
+
+    var toRotate = element.getAttribute('data-type');
+    var period = element.getAttribute('data-period');
+
+    if (toRotate) {
+      typewriterInstance = new TxtType(element, JSON.parse(toRotate), period);
+    }
+  }
+}
+
+var TxtType = function (el, toRotate, period) {
+  // Prevent multiple instances on the same element
+  if (el._typewriterInstance) {
+    return el._typewriterInstance;
+  }
+
   this.toRotate = toRotate;
   this.el = el;
   this.loopNum = 0;
   this.period = parseInt(period, 10) || 2000;
   this.txt = '';
-  this.tick();
   this.isDeleting = false;
+
+  // Store instance reference
+  el._typewriterInstance = this;
+
+  // Start the tick
+  this.tick();
 };
 
 var nameCount = 0
 var makerBool = false;
 
-TxtType.prototype.tick = function() {
+TxtType.prototype.tick = function () {
   var i = this.loopNum % this.toRotate.length;
   var fullTxt = this.toRotate[i];
 
@@ -158,34 +126,43 @@ TxtType.prototype.tick = function() {
     delta /= 2;
   }
 
-  // if (this.txt == 'Hi, I\'m a Maker.')
-
-  if (!this.isDeleting && this.txt == 'Hi, I\'m Christian.' && bool) {
-    return;
-  } else if (!this.isDeleting && this.txt === fullTxt) {
-    if (!this.isDeleting && this.txt == 'Hi, I\'m a Maker.') {
+  // Check if we've reached the end of the current text
+  if (!this.isDeleting && this.txt === fullTxt) {
+    // Set flag when we reach "Hi, I'm a Maker."
+    if (this.txt == 'Hi, I\'m a Maker.') {
       bool = true;
     }
+    // If we've reached "Hi, I'm Christian." and bool is true, stop here permanently
+    if (this.txt == 'Hi, I\'m Christian.' && bool) {
+      // Clear the instance to prevent any further ticks
+      this.el._typewriterInstance = null;
+      typewriterInstance = null;
+      return; // Stop the cycle, keep "Hi, I'm Christian."
+    }
+    // Pause before starting to delete
     delta = this.period;
     this.isDeleting = true;
-  } else if (this.isDeleting && this.txt === 'Hi, I\'m') {
-    if (bool == true && x.matches) {
-      /* document.getElementById("typewritr").style="font-size:8vw"; */
-    }
+  }
+  // Check if we've deleted back to the common prefix
+  else if (this.isDeleting && this.txt === 'Hi, I\'m') {
+    // Move to next text
     this.isDeleting = false;
     this.loopNum++;
     delta = 100;
   }
 
-  setTimeout(function() {
+  setTimeout(function () {
     that.tick();
   }, delta);
 };
 
-// INJECT CSS
-var css = document.createElement("style");
-css.type = "text/css";
-css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff; -webkit-animation: blink .5s step-end infinite alternate; }";
-document.body.appendChild(css);
+// INJECT CSS (only once)
+if (!cssInjected) {
+  var css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff; -webkit-animation: blink .5s step-end infinite alternate; }";
+  document.body.appendChild(css);
+  cssInjected = true;
+}
 
 var x = window.matchMedia("(max-width: 700px)")
