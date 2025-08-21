@@ -12,6 +12,11 @@ function initContent() {
   // Initialize video background
   initVideoBackground();
 
+  // Fade in content after a short delay
+  setTimeout(function () {
+    fadeInContent();
+  }, 300);
+
   // Start typewriter effect after 1 second delay
   if (!typewriterInitialized) {
     setTimeout(function () {
@@ -40,6 +45,14 @@ function initVideoBackground() {
     video.addEventListener('canplay', function () {
       video.play();
     });
+  }
+}
+
+// Fade in the content
+function fadeInContent() {
+  var wrapper = document.getElementById('wrapper');
+  if (wrapper) {
+    wrapper.style.opacity = '1';
   }
 }
 

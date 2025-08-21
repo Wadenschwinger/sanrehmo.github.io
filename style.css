@@ -164,6 +164,10 @@ html {
   top: 0;
 }
 
+#wrapper {
+  transition: opacity 0.8s ease-in-out;
+}
+
 .spinner {
   position: absolute;
   top: 50%;
